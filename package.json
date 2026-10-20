@@ -1,0 +1,15 @@
+{
+  "name": "contoso-order-entry",
+  "version": "0.1.0",
+  "private": true,
+  "description": "A fake 2009-era ASP.NET WebForms order-entry app for LegacyLink to automate.",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js",
+    "test": "playwright test"
+  },
+  "engines": { "node": ">=20" },
+  "devDependencies": {
+    "@playwright/test": "1.56.1"
+  }
+}
