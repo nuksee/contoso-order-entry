@@ -6,10 +6,15 @@
   "type": "module",
   "scripts": {
     "start": "node server.js",
+    "build:web": "node scripts/build-web.mjs",
+    "preview:web": "npm run build:web && node scripts/preview-web.mjs",
     "test": "playwright test"
   },
-  "engines": { "node": ">=20" },
+  "engines": {
+    "node": ">=20"
+  },
   "devDependencies": {
-    "@playwright/test": "1.56.1"
+    "@playwright/test": "1.56.1",
+    "esbuild": "0.25.11"
   }
 }
