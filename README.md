@@ -14,7 +14,17 @@ npm start        # http://localhost:5080, log in as demo / demo
 npm test         # Playwright end-to-end tests
 ```
 
-Environment variables: `PORT` (default 5080), `BUSINESS_DATE` (fixes the order date, e.g. `2026-11-03`), `DRIFT` (`rename`, `move` or `rename,move` at start-up).
+Environment variables (server): `PORT` (default 5080), `BUSINESS_DATE` (fixes the order date, e.g. `2026-11-03`), `DRIFT` (`rename`, `move` or `rename,move` at start-up).
+
+## GitHub Pages build
+
+The same app also runs as a static site. `npm run build:web` writes `dist/`, where a service worker (`web/sw.js`) runs `lib/app.js` inside the browser. Orders, drift switches and the login are saved in the browser's IndexedDB, so each browser has its own copy of the data. `.github/workflows/pages.yml` deploys it on every push to `main`.
+
+```sh
+BASE_PATH=/contoso-order-entry/ npm run preview:web   # http://localhost:5090/contoso-order-entry/
+```
+
+Differences from the server: no `BUSINESS_DATE` or `DRIFT` variables, `/__admin/*` JSON calls only work from a page on the site (not curl), and Playwright's `request` fixture bypasses the service worker, so drive the demo controls through the `/__admin` page instead. The first visit needs JavaScript and service workers (any current browser).
 
 ## Screens
 

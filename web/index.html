@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>Contoso Order Entry</title>
+</head>
+<body style="font: 13px Verdana, sans-serif; background: #b6b7bc; padding: 2em">
+<p id="status">Loading Contoso Order Entry&hellip;</p>
+<noscript>Contoso Order Entry needs JavaScript.</noscript>
+<script>
+  // Served as index.html and as 404.html. Installs the service worker that runs
+  // the app, then reloads the page that was asked for so the worker can serve it.
+  var BASE = '__BASE__';
+  var status = document.getElementById('status');
+  if (!('serviceWorker' in navigator)) {
+    status.textContent = 'This browser does not support service workers, which this demo needs. Try a current Chrome, Edge, Firefox or Safari (not a private window in Firefox).';
+  } else {
+    navigator.serviceWorker
+      .register(BASE + 'sw.js', { scope: BASE })
+      .then(function () { return navigator.serviceWorker.ready; })
+      .then(function () {
+        var p = location.pathname;
+        var landing = p === BASE || p === BASE + 'index.html' || p === BASE + '404.html';
+        location.replace(landing ? BASE + 'Default.aspx' : p + location.search);
+      })
+      .catch(function (err) { status.textContent = 'Could not start the app: ' + err; });
+  }
+</script>
+</body>
+</html>
