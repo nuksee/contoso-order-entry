@@ -1,0 +1,47 @@
+/* Visual Studio 2008/2010 "Site.css" look: Verdana, blue header, gray grids. */
+body { background: #b6b7bc; font-size: .80em; font-family: Verdana, Tahoma, Arial, sans-serif; margin: 0; padding: 0; color: #333; }
+a:link, a:visited { color: #034af3; }
+h1 { font-size: 1.6em; color: #fff; margin: 0; padding: 0 0 0 4px; font-variant: small-caps; font-weight: normal; line-height: 2em; }
+h2 { font-size: 1.4em; color: #666; font-variant: small-caps; text-transform: none; font-weight: 200; margin-bottom: 0; }
+h3 { font-size: 1.1em; color: #666; font-weight: normal; margin: 1.2em 0 .4em; }
+.page { width: 860px; background: #fff; margin: 20px auto 0; border: 1px solid #496077; }
+#header { position: relative; background: #4b6c9e; width: 100%; }
+#header .title { display: block; float: left; text-align: left; width: auto; padding: 4px 0 0 8px; }
+.loginDisplay { font-size: 1.1em; display: block; text-align: right; padding: 10px; color: #fff; }
+.loginDisplay a:link, .loginDisplay a:visited { color: #fff; }
+.bold { font-weight: bold; }
+#menu { clear: both; background: #3a4f63; padding: 4px 0 4px 8px; }
+table.menu td { padding: 0; }
+a.menuItem { background: #465c71; border: 1px solid #4b6c9e; color: #dde4ec; display: block; line-height: 1.35em; padding: 4px 20px; text-decoration: none; white-space: nowrap; margin-right: 2px; }
+a.menuItem:hover, a.menuItem.selected { background: #bfcbd6; color: #465c71; }
+#main { padding: 0 12px 16px; min-height: 420px; }
+#footer { color: #4e5766; padding: 8px 0; margin: 0 auto; text-align: center; line-height: normal; background: #fff; border-top: 1px solid #ccc; font-size: .9em; }
+fieldset { margin: 1em 0; padding: 0 1em 1em; border: 1px solid #ccc; }
+fieldset.login { width: 420px; }
+legend { font-size: 1.1em; font-weight: 600; padding: 2px 4px 8px; }
+table.form td { padding: 3px 4px; vertical-align: top; }
+td.lbl { text-align: right; white-space: nowrap; font-weight: bold; color: #444; width: 140px; }
+.txt { border: 1px solid #7f9db9; font: 1em Verdana, sans-serif; padding: 2px; }
+.ddl { font: 1em Verdana, sans-serif; }
+.btn { font: 1em Tahoma, sans-serif; padding: 2px 10px; background: #ece9d8; border: 1px solid #003c74; border-radius: 3px; cursor: pointer; }
+.btn:hover { background: #fff3c6; }
+.buttons { text-align: right; width: 520px; padding-top: 4px; }
+.toolbar { background: #ece9d8; border: 1px solid #aca899; padding: 4px 6px; margin-top: 10px; }
+.validator { color: red; font-weight: bold; }
+.valsummary { color: red; margin: 10px 0; }
+.valsummary ul { margin: 4px 0; }
+.msg { display: block; margin: 10px 0; padding: 6px 8px; }
+.msg-error { color: red; }
+.msg-success { color: #006400; background: #eaf5e1; border: 1px solid #9c9; }
+.failureNotification { color: red; font-size: 1.2em; }
+table.grid { border-collapse: collapse; border: 1px solid #999; margin-top: 10px; }
+table.grid th, table.grid td { padding: 3px 8px; border: 1px solid #999; }
+tr.gridHeader { background: #5d7b9d; color: #fff; font-weight: bold; }
+tr.gridRow { background: #f7f6f3; }
+tr.gridAlt { background: #fff; }
+table.details { border-collapse: collapse; margin-top: 10px; width: 420px; }
+table.details td { padding: 3px 8px; border: 1px solid #ccc; }
+table.details td.lbl { background: #e9ecf1; text-align: left; width: 140px; }
+td.num { text-align: right; }
+ul.tasks li { margin: 6px 0; }
+.note { color: #888; font-size: .9em; }
