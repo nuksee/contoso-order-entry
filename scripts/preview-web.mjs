@@ -1,4 +1,4 @@
-// Serves dist/ the way GitHub Pages does: under BASE_PATH, with 404.html for unknown paths.
+// Serves dist/ (or --dir <dir>) the way GitHub Pages does: under BASE_PATH, with 404.html for unknown paths.
 
 import { readFile } from 'node:fs/promises';
 import { createServer } from 'node:http';
@@ -6,7 +6,8 @@ import { extname, join, normalize } from 'node:path';
 
 const PORT = +(process.env.PORT || 5090);
 const BASE = (process.env.BASE_PATH || '/').replace(/\/?$/, '/');
-const ROOT = join(process.cwd(), 'dist');
+const dirFlag = process.argv.indexOf('--dir');
+const ROOT = join(process.cwd(), dirFlag > 0 ? process.argv[dirFlag + 1] : 'dist');
 const TYPES = { '.html': 'text/html; charset=utf-8', '.js': 'text/javascript', '.css': 'text/css' };
 
 createServer(async (req, res) => {
@@ -24,4 +25,4 @@ createServer(async (req, res) => {
   }
   res.writeHead(404, { 'Content-Type': TYPES['.html'] });
   res.end(await readFile(join(ROOT, '404.html')));
-}).listen(PORT, () => console.log(`Previewing dist/ at http://localhost:${PORT}${BASE}`));
+}).listen(PORT, () => console.log(`Previewing ${ROOT} at http://localhost:${PORT}${BASE}`));

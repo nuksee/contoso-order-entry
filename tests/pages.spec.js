@@ -2,6 +2,10 @@ import { expect, test } from '@playwright/test';
 
 // The static build: a service worker runs the app inside the browser.
 // Each test gets a fresh browser context, so a fresh worker and empty storage.
+// Runs twice: under /contoso-order-entry/ (GitHub Pages) and at / (Vercel).
+
+const base = () => new URL(test.info().project.use.baseURL).pathname;
+const at = (path) => new RegExp('^[^?]*//[^/]+' + (base() + path).replace(/[.?]/g, '\\$&'));
 
 async function logIn(page) {
   await page.goto('Orders/New.aspx'); // unknown to the static host: 404.html installs the worker first
@@ -9,13 +13,13 @@ async function logIn(page) {
   await page.fill('#ctl00_MainContent_txtUserName', 'demo');
   await page.fill('#ctl00_MainContent_txtPassword', 'demo');
   await page.click('#ctl00_MainContent_btnLogin');
-  await expect(page).toHaveURL(/\/contoso-order-entry\/Orders\/New\.aspx$/);
+  await expect(page).toHaveURL(new RegExp(at('Orders/New.aspx').source + '$'));
 }
 
 test('landing page starts the app and links stay under the base path', async ({ page }) => {
   await page.goto('');
-  await expect(page).toHaveURL(/\/contoso-order-entry\/Login\.aspx/);
-  await expect(page.locator('link[rel=stylesheet]')).toHaveAttribute('href', '/contoso-order-entry/Styles/Site.css');
+  await expect(page).toHaveURL(at('Login.aspx'));
+  await expect(page.locator('link[rel=stylesheet]')).toHaveAttribute('href', base() + 'Styles/Site.css');
   await expect(page.locator('#header')).toHaveCSS('background-color', 'rgb(75, 108, 158)');
 });
 
