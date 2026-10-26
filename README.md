@@ -16,9 +16,13 @@ npm test         # Playwright end-to-end tests
 
 Environment variables (server): `PORT` (default 5080), `BUSINESS_DATE` (fixes the order date, e.g. `2026-11-03`), `DRIFT` (`rename`, `move` or `rename,move` at start-up).
 
-## GitHub Pages build
+## Static build (GitHub Pages, Vercel)
 
-The same app also runs as a static site. `npm run build:web` writes `dist/`, where a service worker (`web/sw.js`) runs `lib/app.js` inside the browser. Orders, drift switches and the login are saved in the browser's IndexedDB, so each browser has its own copy of the data. `.github/workflows/pages.yml` deploys it on every push to `main`.
+The same app also runs as a static site. `npm run build:web` writes `dist/`, where a service worker (`web/sw.js`) runs `lib/app.js` inside the browser. Orders, drift switches and the login are saved in the browser's IndexedDB, so each browser has its own copy of the data. `.github/workflows/pages.yml` deploys it to GitHub Pages on every push to `main`, and `vercel.json` tells Vercel to build the same thing at the site root.
+
+The Node server isn't deployed to Vercel on purpose: Vercel runs it as short-lived functions that don't share memory, so logins, orders and drift switches would get lost between requests.
+
+To set up Vercel once: at [vercel.com/new](https://vercel.com/new), sign in with GitHub, import `contoso-order-entry` and keep the settings it reads from `vercel.json`. Every push to `main` then redeploys, and pull requests get preview URLs.
 
 ```sh
 BASE_PATH=/contoso-order-entry/ npm run preview:web   # http://localhost:5090/contoso-order-entry/
