@@ -4,6 +4,8 @@ A fake 2009-era ASP.NET WebForms order-entry app, built as the target for [Legac
 
 It's plain Node with no runtime dependencies, but the markup copies what WebForms emits: one page-wide `aspnetForm`, `ctl00$MainContent$…` control names, `__VIEWSTATE`, `__doPostBack` grid links, `.aspx` URLs and a `.ASPXAUTH` login cookie.
 
+**Live copy:** [contoso-order-entry.vercel.app](https://contoso-order-entry.vercel.app/) (log in as demo / demo; demo controls at [/__admin](https://contoso-order-entry.vercel.app/__admin)). It's the static build described below, so each browser keeps its own data.
+
 ![New Sales Order screen](docs/new-order.png)
 
 ## Run it
