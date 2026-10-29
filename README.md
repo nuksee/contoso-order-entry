@@ -1,5 +1,7 @@
 # Contoso Order Entry
 
+> **Hackathon note:** this app was built on Oct 20, 2026, before the Meta Global AI Developer Hackathon build window (Oct 26 – Nov 4). It's the demo target for LegacyLink, not part of the entry; only `vercel.json` was added during the window. See [what was built when](https://github.com/nuksee/legacylink/blob/main/docs/hackathon.md#what-was-built-when).
+
 A fake 2009-era ASP.NET WebForms order-entry app, built as the target for [LegacyLink](https://github.com/nuksee/legacylink) to explore, automate and self-heal against. It has no API on purpose: the only way in is the UI.
 
 It's plain Node with no runtime dependencies, but the markup copies what WebForms emits: one page-wide `aspnetForm`, `ctl00$MainContent$…` control names, `__VIEWSTATE`, `__doPostBack` grid links, `.aspx` URLs and a `.ASPXAUTH` login cookie.
